@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tyler McLaughlin | Human Resources Business Partner</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f9fc;
+      --bg-gradient: linear-gradient(180deg, #f7f9fc 0%, #edf3f8 52%, #f7f9fc 100%);
+      --bg-alt: #ffffff;
+      --ink: #172033;
+      --muted: #53647c;
+      --line: #d8e0ea;
+      --brand: #0b1f3a;
+      --brand-2: #2a6f97;
+      --accent: #9a5a1f;
+      --card: rgba(255,255,255,0.88);
+      --header-bg: rgba(247, 249, 252, 0.84);
+      --nav-hover: #ffffff;
+      --chip-bg: rgba(42,111,151,0.11);
+      --accent-soft: rgba(154,90,31,0.13);
+      --hero-glow-a: rgba(154, 90, 31, 0.13);
+      --hero-glow-b: rgba(42, 111, 151, 0.13);
+      --shadow: 0 18px 45px rgba(11, 31, 58, 0.10);
+      --shadow-strong: 0 24px 60px rgba(11, 31, 58, 0.18);
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --radius-sm: 12px;
+      --max: 1180px;
+    }
+
+    [data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #08111f;
+      --bg-gradient: linear-gradient(180deg, #08111f 0%, #0f1d31 52%, #08111f 100%);
+      --bg-alt: #0f1d31;
+      --ink: #edf4ff;
+      --muted: #b8c5d8;
+      --line: #24344c;
+      --brand: #e8f1ff;
+      --brand-2: #79c7ee;
+      --accent: #f0b66d;
+      --card: rgba(15,29,49,0.86);
+      --header-bg: rgba(8, 17, 31, 0.86);
+      --nav-hover: rgba(255,255,255,0.09);
+      --chip-bg: rgba(121,199,238,0.14);
+      --accent-soft: rgba(240,182,109,0.16);
+      --hero-glow-a: rgba(240, 182, 109, 0.16);
+      --hero-glow-b: rgba(121, 199, 238, 0.16);
+      --shadow: 0 18px 45px rgba(0, 0, 0, 0.34);
+      --shadow-strong: 0 24px 60px rgba(0, 0, 0, 0.46);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 96px;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, var(--hero-glow-a), transparent 32rem),
+        radial-gradient(circle at 90% 10%, var(--hero-glow-b), transparent 28rem),
+        var(--bg-gradient);
+      color: var(--ink);
+      line-height: 1.6;
+      overflow-x: hidden;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+      background: rgba(200, 132, 47, 0.24);
+      color: var(--brand);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .site-shell {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(18px);
+      background: var(--header-bg);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--brand);
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      display: grid;
+      place-items: center;
+      color: #fff;
+      box-shadow: 0 12px 24px rgba(35, 57, 93, 0.22);
+    }
+
+    nav ul {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      list-style: none;
+    }
+
+    nav a {
+      display: inline-flex;
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.94rem;
+      transition: 180ms ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      background: var(--nav-hover);
+      color: var(--brand);
+      box-shadow: 0 8px 18px rgba(31, 41, 51, 0.08);
+    }
+
+    .mobile-toggle {
+      display: none;
+      border: 0;
+      background: var(--bg-alt);
+      color: var(--brand);
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      font-size: 1.35rem;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-width: 44px;
+      height: 44px;
+      padding: 0 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--bg-alt);
+      color: var(--brand);
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(11,31,58,0.08);
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, border-color 180ms ease;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+      border-color: rgba(42,111,151,0.36);
+    }
+
+    .theme-toggle .theme-label {
+      font-size: 0.9rem;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid rgba(200, 132, 47, 0.42);
+      outline-offset: 4px;
+    }
+
+    .hero {
+      min-height: calc(100vh - 76px);
+      display: grid;
+      align-items: center;
+      padding: 76px 0 48px;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      background: var(--card);
+      border: 1px solid rgba(222,215,204,0.9);
+      border-radius: 999px;
+      color: var(--brand);
+      font-weight: 700;
+      font-size: 0.88rem;
+      margin-bottom: 22px;
+      box-shadow: 0 10px 24px rgba(31,41,51,0.06);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--brand-2);
+      box-shadow: 0 0 0 6px rgba(111, 127, 82, 0.14);
+    }
+
+    h1 {
+      font-size: clamp(3.2rem, 8vw, 7.2rem);
+      line-height: 0.9;
+      letter-spacing: -0.075em;
+      color: var(--brand);
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-size: clamp(1.25rem, 2vw, 1.75rem);
+      color: var(--accent);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 18px;
+    }
+
+    .hero-copy {
+      max-width: 720px;
+      font-size: clamp(1.02rem, 1.5vw, 1.22rem);
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 800;
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, border-color 180ms ease;
+      will-change: transform;
+    }
+
+    .button.primary {
+      background: var(--brand);
+      color: #fff;
+      box-shadow: 0 16px 30px rgba(11, 31, 58, 0.24);
+    }
+
+    .button.primary:hover {
+      transform: translateY(-3px);
+      background: #12325c;
+      box-shadow: 0 24px 42px rgba(11, 31, 58, 0.30);
+    }
+
+    .button.primary:active,
+    .button.secondary:active {
+      transform: translateY(0);
+    }
+
+    .button.secondary {
+      background: var(--card);
+      color: var(--brand);
+      border-color: rgba(222,215,204,0.95);
+    }
+
+    .button.secondary:hover {
+      background: var(--bg-alt);
+      border-color: rgba(42, 111, 151, 0.35);
+      transform: translateY(-3px);
+      box-shadow: 0 18px 32px rgba(11, 31, 58, 0.11);
+    }
+
+    .profile-card {
+      background: var(--card);
+      border: 1px solid rgba(222,215,204,0.92);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-card::before {
+      content: "";
+      position: absolute;
+      inset: -80px -120px auto auto;
+      width: 240px;
+      height: 240px;
+      background: radial-gradient(circle, rgba(176,111,60,0.23), transparent 65%);
+    }
+
+    .portrait {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 24px;
+      background:
+        linear-gradient(135deg, rgba(35,57,93,0.94), rgba(176,111,60,0.82)),
+        radial-gradient(circle at 25% 20%, rgba(255,255,255,0.38), transparent 14rem);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: clamp(4rem, 11vw, 7rem);
+      font-weight: 900;
+      letter-spacing: -0.08em;
+      margin-bottom: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .portrait::after {
+      content: "HRBP";
+      position: absolute;
+      bottom: 18px;
+      right: 20px;
+      font-size: 0.9rem;
+      letter-spacing: 0.22em;
+      font-weight: 800;
+      opacity: 0.75;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      background: var(--card);
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(222,215,204,0.74);
+    }
+
+    .icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 9px;
+      background: rgba(35,57,93,0.1);
+      color: var(--brand);
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      font-size: 0.9rem;
+    }
+
+    section {
+      padding: 86px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 28px;
+      margin-bottom: 34px;
+    }
+
+    .section-kicker {
+      color: var(--accent);
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      color: var(--brand);
+      font-size: clamp(2rem, 4vw, 3.3rem);
+      line-height: 1;
+      letter-spacing: -0.055em;
+    }
+
+    .section-intro {
+      max-width: 540px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid rgba(222,215,204,0.88);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: clamp(22px, 4vw, 38px);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .about-copy p {
+      color: var(--muted);
+      margin-bottom: 16px;
+      font-size: 1.04rem;
+    }
+
+    .education-card {
+      display: grid;
+      gap: 18px;
+    }
+
+    .mini-card {
+      padding: 20px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(222,215,204,0.86);
+      background: var(--card);
+    }
+
+    .mini-card h3 {
+      color: var(--brand);
+      margin-bottom: 6px;
+      font-size: 1.08rem;
+    }
+
+    .mini-card p {
+      color: var(--muted);
+    }
+
+    .numbers {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .stat {
+      min-height: 178px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 24px;
+      border-radius: var(--radius-lg);
+      background: var(--bg-alt);
+      border: 1px solid rgba(222,215,204,0.88);
+      box-shadow: 0 14px 30px rgba(31,41,51,0.07);
+      transition: 200ms ease;
+    }
+
+    .stat:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 38px rgba(31,41,51,0.10);
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--brand);
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.06em;
+      line-height: 1;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-weight: 650;
+      margin-top: 14px;
+      display: block;
+    }
+
+    .skills-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 18px;
+    }
+
+    .skill-card {
+      padding: 24px;
+      background: var(--bg-alt);
+      border: 1px solid rgba(216,224,234,0.95);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 14px 30px rgba(11,31,58,0.07);
+      transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(42, 111, 151, 0.30);
+      box-shadow: 0 20px 42px rgba(11,31,58,0.11);
+    }
+
+    .skill-card h3 {
+      color: var(--brand);
+      font-size: 1.12rem;
+      margin-bottom: 14px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .chip {
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: var(--chip-bg);
+      color: var(--brand);
+      font-weight: 750;
+      font-size: 0.86rem;
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 18px;
+    }
+
+    .experience-card {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 24px;
+      padding: 28px;
+      background: var(--bg-alt);
+      border: 1px solid rgba(222,215,204,0.9);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 14px 30px rgba(31,41,51,0.07);
+    }
+
+    .experience-meta {
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+
+    .experience-meta .company {
+      color: var(--brand);
+      font-size: 1rem;
+      margin-bottom: 4px;
+      font-weight: 900;
+    }
+
+    .experience-main h3 {
+      color: var(--brand);
+      font-size: 1.22rem;
+      margin-bottom: 10px;
+    }
+
+    .experience-main p {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .experience-main ul,
+    .project-card ul {
+      color: var(--muted);
+      padding-left: 18px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .project-card {
+      background: var(--bg-alt);
+      border: 1px solid rgba(216,224,234,0.95);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 14px 30px rgba(11,31,58,0.07);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--brand-2), var(--accent));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 220ms ease;
+    }
+
+    .project-card:hover,
+    .project-card:focus-within {
+      transform: translateY(-6px);
+      border-color: rgba(42, 111, 151, 0.35);
+      box-shadow: var(--shadow-strong);
+    }
+
+    .project-card:hover::before,
+    .project-card:focus-within::before {
+      transform: scaleX(1);
+    }
+
+    .project-card h3 {
+      color: var(--brand);
+      font-size: 1.16rem;
+      letter-spacing: -0.02em;
+    }
+
+    .project-tag {
+      width: fit-content;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .contact-section {
+      padding-bottom: 96px;
+    }
+
+    .contact-panel {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 28px;
+      align-items: center;
+      background: linear-gradient(135deg, var(--brand), #17263f);
+      color: #fff;
+      border-radius: 34px;
+      padding: clamp(26px, 5vw, 52px);
+      box-shadow: 0 22px 55px rgba(35,57,93,0.28);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .contact-panel::after {
+      content: "";
+      position: absolute;
+      width: 340px;
+      height: 340px;
+      right: -130px;
+      top: -130px;
+      border-radius: 50%;
+      background: rgba(176,111,60,0.28);
+    }
+
+    .contact-panel h2 {
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .contact-panel p {
+      color: rgba(255,255,255,0.76);
+      max-width: 620px;
+    }
+
+    .contact-actions {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-link {
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #fff;
+      font-weight: 800;
+      transition: 180ms ease;
+    }
+
+    .contact-link:hover {
+      background: rgba(255,255,255,0.16);
+      transform: translateX(4px);
+    }
+
+    footer {
+      border-top: 1px solid rgba(222,215,204,0.86);
+      padding: 28px 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: 600ms ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    [data-theme="dark"] .button.primary {
+      color: #08111f;
+    }
+
+    [data-theme="dark"] .portrait {
+      background:
+        linear-gradient(135deg, rgba(121,199,238,0.88), rgba(240,182,109,0.74)),
+        radial-gradient(circle at 25% 20%, rgba(255,255,255,0.22), transparent 14rem);
+      color: #08111f;
+    }
+
+    [data-theme="dark"] .contact-panel {
+      background: linear-gradient(135deg, #0f1d31, #08111f);
+      border: 1px solid var(--line);
+    }
+
+    @media (max-width: 960px) {
+      .hero-grid,
+      .about-grid,
+      .contact-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-card {
+        max-width: 560px;
+      }
+
+      .numbers,
+      .skills-wrap,
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .experience-card {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .site-shell {
+        width: min(100% - 28px, var(--max));
+      }
+
+      .mobile-toggle {
+        display: inline-grid;
+        place-items: center;
+      }
+
+      nav {
+        position: absolute;
+        top: 76px;
+        left: 14px;
+        right: 14px;
+        background: rgba(255,255,255,0.96);
+        border: 1px solid rgba(222,215,204,0.92);
+        border-radius: 22px;
+        box-shadow: var(--shadow);
+        padding: 12px;
+        transform-origin: top;
+        transform: scaleY(0.96);
+        opacity: 0;
+        pointer-events: none;
+        transition: 180ms ease;
+      }
+
+      nav.open {
+        transform: scaleY(1);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      nav a {
+        justify-content: center;
+      }
+
+      .hero {
+        padding-top: 42px;
+      }
+
+      h1 {
+        font-size: clamp(3.2rem, 17vw, 5rem);
+      }
+
+      .section-head {
+        display: grid;
+      }
+
+      .numbers,
+      .skills-wrap,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stat {
+        min-height: 142px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+
+      .button,
+      .stat,
+      .contact-link {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="site-shell nav">
+      <a class="brand" href="#top" aria-label="Tyler McLaughlin home">
+        <span class="brand-mark">TM</span>
+        <span>Tyler McLaughlin</span>
+      </a>
+      <div class="nav-actions">
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+          <span class="theme-icon" aria-hidden="true">◐</span>
+          <span class="theme-label">Theme</span>
+        </button>
+        <button class="mobile-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      </div>
+      <nav aria-label="Primary navigation">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#numbers">Numbers</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="site-shell hero-grid">
+        <div class="hero-content reveal">
+          <div class="eyebrow">Strategic HR Partner · Biotech · Organizational Growth</div>
+          <h1>Tyler McLaughlin</h1>
+          <div class="hero-title">Director, Human Resources Business Partner</div>
+          <p class="hero-copy">
+            Strategic HR Partner supporting Corporate Functions through rapid organizational growth, commercial readiness,
+            acquisition integration, workforce planning, talent strategy, organizational effectiveness, and enterprise change.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#contact">Start a Conversation</a>
+            <a class="button secondary" href="#experience">View Experience</a>
+          </div>
+        </div>
+
+        <aside class="profile-card reveal" aria-label="Contact summary">
+          <div class="portrait" aria-hidden="true">TM</div>
+          <div class="contact-list">
+            <a class="contact-item" href="mailto:tjmclaug91@gmail.com">
+              <span class="icon">✉</span>
+              <span>tjmclaug91@gmail.com</span>
+            </a>
+            <a class="contact-item" href="tel:+18583495172">
+              <span class="icon">☎</span>
+              <span>858-349-5172</span>
+            </a>
+            <div class="contact-item">
+              <span class="icon">⌖</span>
+              <span>San Diego, CA</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="site-shell">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">About Me</div>
+            <h2>Practical human capital strategy for complex moments.</h2>
+          </div>
+          <p class="section-intro">
+            Focused on practical, enterprise-minded HR solutions across biotech, pharmaceutical, and life sciences organizations.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="panel about-copy reveal">
+            <p>
+              Tyler is a Human Resources Business Partner with experience advising executive and functional leadership on
+              organizational design, workforce planning, talent strategy, leadership development, employee relations,
+              performance management, succession planning, compensation, and change management.
+            </p>
+            <p>
+              His work spans pre-commercial and post-commercial launch environments, M&A integration, restructuring,
+              career architecture, engagement strategy, early talent programs, and manager enablement.
+            </p>
+            <p>
+              Earlier experience includes talent acquisition, staffing leadership, business development, and cell and
+              molecular biology research.
+            </p>
+          </div>
+
+          <div class="education-card reveal">
+            <div class="mini-card">
+              <h3>Education</h3>
+              <p>University of California, San Diego · BSc, Human Biology</p>
+            </div>
+            <div class="mini-card">
+              <h3>Certification</h3>
+              <p>Society for Human Resource Management · SHRM-CP Certification</p>
+            </div>
+            <div class="mini-card">
+              <h3>Recognition</h3>
+              <p>Multiple AVID Accolades, Enterprise Spot/Spark Awards, and selection as an AVID Influencer.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="numbers">
+      <div class="site-shell">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">Key Numbers</div>
+            <h2>Measurable impact across growth, deals, and talent.</h2>
+          </div>
+          <p class="section-intro">
+            Selected metrics from acquisition, integration, early talent, hiring, and staffing leadership work.
+          </p>
+        </div>
+
+        <div class="numbers">
+          <div class="stat reveal">
+            <strong>$12B</strong>
+            <span>Avidity acquisition by Novartis, with Office of Transition leadership.</span>
+          </div>
+          <div class="stat reveal">
+            <strong>300%</strong>
+            <span>Year-over-year growth achieved in Avidity’s Early Talent Program.</span>
+          </div>
+          <div class="stat reveal">
+            <strong>85%</strong>
+            <span>Representation from historically underrepresented populations in Avidity’s Early Talent Program.</span>
+          </div>
+          <div class="stat reveal">
+            <strong>46</strong>
+            <span>FTEs transferred from Avidity to Atrium Therapeutics at close.</span>
+          </div>
+          <div class="stat reveal">
+            <strong>$4.8B</strong>
+            <span>Mirati acquisition by Bristol Myers Squibb, with people operations design and execution support.</span>
+          </div>
+          <div class="stat reveal">
+            <strong>600+</strong>
+            <span>Audience size for town halls, seminars, trainings, and panels.</span>
+          </div>
+          <div class="stat reveal">
+            <strong>48</strong>
+            <span>Technical hires personally delivered during Mirati’s 140% year-over-year headcount growth.</span>
+          </div>
+          <div class="stat reveal">
+            <strong>1760%</strong>
+            <span>Year-over-year increase in direct hire revenue while leading life sciences staffing work.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="site-shell">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">Skills</div>
+            <h2>Strategic partnership with quality execution.</h2>
+          </div>
+          <p class="section-intro">
+            Capabilities organized around the themes most visible throughout the resume.
+          </p>
+        </div>
+
+        <div class="skills-wrap">
+          <div class="skill-card reveal">
+            <h3>HR Strategy & Advisory</h3>
+            <div class="chips">
+              <span class="chip">Organizational Design</span>
+              <span class="chip">Workforce Planning</span>
+              <span class="chip">Talent Strategy</span>
+              <span class="chip">Leadership Coaching</span>
+              <span class="chip">Employee Relations</span>
+              <span class="chip">Compensation</span>
+            </div>
+          </div>
+          <div class="skill-card reveal">
+            <h3>Talent & Performance</h3>
+            <div class="chips">
+              <span class="chip">Performance Management</span>
+              <span class="chip">Succession Planning</span>
+              <span class="chip">9-Box Calibration</span>
+              <span class="chip">Talent Reviews</span>
+              <span class="chip">Career Architecture</span>
+              <span class="chip">Early Talent</span>
+            </div>
+          </div>
+          <div class="skill-card reveal">
+            <h3>Change & Integration</h3>
+            <div class="chips">
+              <span class="chip">M&A Integration</span>
+              <span class="chip">Change Management</span>
+              <span class="chip">Restructuring</span>
+              <span class="chip">Governance</span>
+              <span class="chip">Business Continuity</span>
+              <span class="chip">Risk Controls</span>
+            </div>
+          </div>
+          <div class="skill-card reveal">
+            <h3>Programs & Culture</h3>
+            <div class="chips">
+              <span class="chip">Engagement Surveys</span>
+              <span class="chip">Leadership Development</span>
+              <span class="chip">DE&I</span>
+              <span class="chip">Manager Enablement</span>
+              <span class="chip">Team Effectiveness</span>
+              <span class="chip">Inclusion</span>
+            </div>
+          </div>
+          <div class="skill-card reveal">
+            <h3>Talent Acquisition</h3>
+            <div class="chips">
+              <span class="chip">Full Lifecycle Recruiting</span>
+              <span class="chip">Executive Hiring</span>
+              <span class="chip">Offer Strategy</span>
+              <span class="chip">LinkedIn Recruiter</span>
+              <span class="chip">VSource</span>
+              <span class="chip">Search Firms</span>
+            </div>
+          </div>
+          <div class="skill-card reveal">
+            <h3>Systems & Tools</h3>
+            <div class="chips">
+              <span class="chip">Workday</span>
+              <span class="chip">SharePoint</span>
+              <span class="chip">MS Office Suite</span>
+              <span class="chip">Concur</span>
+              <span class="chip">ATS</span>
+              <span class="chip">Payroll</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="site-shell">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">Experience</div>
+            <h2>A foundation in research, proven expertise in scalable HR solutions.</h2>
+          </div>
+          <p class="section-intro">
+            A career path from research and staffing into senior HR business partnership and enterprise change leadership.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <article class="experience-card reveal">
+            <div class="experience-meta">
+              <div class="company">Avidity Biosciences Inc., a Novartis Co.</div>
+              <div>Dec 2024 – Present</div>
+            </div>
+            <div class="experience-main">
+              <h3>Director, Human Resources Business Partner</h3>
+              <p>
+                Strategic HR Partner supporting Corporate Functions during rapid organizational growth, commercial readiness,
+                and acquisition by Novartis.
+              </p>
+              <ul>
+                <li>Selected as one of two HR leaders for the Office of Transition through the $12B Novartis acquisition and Atrium Therapeutics spin out.</li>
+                <li>Appointed HR Lead for the Avidity Integration Office following Atrium spin out.</li>
+                <li>Designed contingent workforce governance, succession planning methodology, career architecture frameworks, and practical HR governance tools.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="experience-card reveal">
+            <div class="experience-meta">
+              <div class="company">Mirati Therapeutics, a Bristol Myers Squibb Co.</div>
+              <div>Jan 2023 – Oct 2024</div>
+            </div>
+            <div class="experience-main">
+              <h3>Associate Director, Human Resources Business Partner</h3>
+              <p>
+                Delivered strategic workforce capital solutions in pre- and post-commercial launch settings for Finance,
+                Legal, IT, Facilities, and Biometrics organizations.
+              </p>
+              <ul>
+                <li>Supported people operations design and execution for the $4.8B acquisition by Bristol Myers Squibb.</li>
+                <li>Led organizational change management across restructuring, workforce reductions, M&A integration, position elimination, and facility decommissioning.</li>
+                <li>Contributed to annual performance cycle design, engagement survey design, leadership development, and organizational effectiveness activities.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="experience-card reveal">
+            <div class="experience-meta">
+              <div class="company">Mirati Therapeutics / NXTThing RPO</div>
+              <div>Aug 2021 – Dec 2022</div>
+            </div>
+            <div class="experience-main">
+              <h3>Associate Director, Talent Acquisition · Senior Partner, Talent Acquisition</h3>
+              <p>
+                Full lifecycle recruitment for Technical Operations, Research, and Regulatory Affairs in a clinical and
+                commercial stage oncology setting.
+              </p>
+              <ul>
+                <li>Managed 20+ full-time employee requisitions from Senior Associate to Vice President.</li>
+                <li>Partnered with HRBP and leadership on leveling, scope, budget, job descriptions, DE&I strategies, offers, and succession planning.</li>
+                <li>Established and launched Mirati’s first Early Talent Development Program.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="experience-card reveal">
+            <div class="experience-meta">
+              <div class="company">Kite Pharmaceuticals</div>
+              <div>Sept 2018 – Aug 2021</div>
+            </div>
+            <div class="experience-main">
+              <h3>Recruiter, Talent Acquisition</h3>
+              <p>
+                Sourced pharmaceutical professionals with focus in Process Development, Regulatory Affairs, Corporate
+                Development/Strategy, and Project/Program Management.
+              </p>
+              <ul>
+                <li>Delivered successful hires from Associate to VP, with focus on leadership roles.</li>
+                <li>Served as a 2020 Workday “Super User” supporting system implementations, IT feedback, and global TA subject matter expertise.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="experience-card reveal">
+            <div class="experience-meta">
+              <div class="company">Yoh, Life Sciences Division</div>
+              <div>June 2017 – Aug 2018</div>
+            </div>
+            <div class="experience-main">
+              <h3>Market Manager</h3>
+              <p>
+                Pivoted an IT/software-focused staffing branch into the life science sector and served as the main point
+                of contact for West Coast life science business.
+              </p>
+              <ul>
+                <li>Hired and retained four professionals across recruiting and business development.</li>
+                <li>Achieved 460% increase in weekly contract revenue by EOY and 1760% year-over-year increase in direct hire revenue.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="experience-card reveal">
+            <div class="experience-meta">
+              <div class="company">Apex Life Sciences</div>
+              <div>Nov 2010 – May 2017</div>
+            </div>
+            <div class="experience-main">
+              <h3>Branch Leader · Sr. Account Executive · Account Executive</h3>
+              <p>
+                Sales leadership, business development, and recruitment activities within biotech, pharmaceutical, and
+                medical device spaces.
+              </p>
+            </div>
+          </article>
+
+          <article class="experience-card reveal">
+            <div class="experience-meta">
+              <div class="company">Calmune Corporation</div>
+              <div>Oct 2008 – Oct 2010</div>
+            </div>
+            <div class="experience-main">
+              <h3>Media Technician & Research Associate</h3>
+              <p>
+                Cell and molecular biology research aimed at identifying drug targets for Staphylococcus aureus and Candida albicans.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="site-shell">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">Projects</div>
+            <h2>Selected work translated into portfolio case themes.</h2>
+          </div>
+          <p class="section-intro">
+            These are resume-grounded initiatives, framed as projects without adding unsupported details.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card reveal">
+            <div class="project-tag">Transformation</div>
+            <h3>Office of Transition & Integration Governance</h3>
+            <ul>
+              <li>Served as one of two HR leaders for the Office of Transition during Avidity’s acquisition by Novartis.</li>
+              <li>Provided HR leadership for the Avidity Integration Office after Atrium Therapeutics spin out.</li>
+              <li>Supported strategic coordination, business continuity, and enterprise governance.</li>
+            </ul>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-tag">Risk & Governance</div>
+            <h3>Contingent Workforce Governance</h3>
+            <ul>
+              <li>Introduced standardized approval workflows and centralized resource tracking.</li>
+              <li>Built AI enabled worker classification assessments for 1099, W2, KOL/HCP worker types.</li>
+              <li>Improved compliance and reduced legal exposure.</li>
+            </ul>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-tag">Talent</div>
+            <h3>Succession Planning & Talent Reviews</h3>
+            <ul>
+              <li>Developed methodology for high-potential identification and critical talent assessment.</li>
+              <li>Supported 9-box calibration, talent cards, and executive talent review processes.</li>
+              <li>Enabled leadership continuity and integration planning.</li>
+            </ul>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-tag">Career Systems</div>
+            <h3>Career Architecture Frameworks</h3>
+            <ul>
+              <li>Created standardized leveling criteria and title architecture across G&A organizations.</li>
+              <li>Improved organizational consistency, compensation alignment, and career transparency.</li>
+              <li>Partnered with Compensation at Mirati on leveling criteria and marketplace alignment.</li>
+            </ul>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-tag">Early Talent</div>
+            <h3>Early Talent Program Growth</h3>
+            <ul>
+              <li>Redesigned and expanded Avidity’s Early Talent Program.</li>
+              <li>Achieved 300% year-over-year growth and 85% representation from historically underrepresented populations.</li>
+              <li>Converted multiple interns into full-time and contingent staff.</li>
+            </ul>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-tag">Performance</div>
+            <h3>Performance Cycle & Engagement Design</h3>
+            <ul>
+              <li>Helped design Mirati’s annual performance cycle from goal setting through annual evaluation.</li>
+              <li>Contributed to Mirati’s first employee engagement survey, including project planning and executive analysis.</li>
+              <li>Created action planning aligned to areas of improvement and organizational needs.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+      <div class="site-shell">
+        <div class="contact-panel reveal">
+          <div>
+            <div class="section-kicker">Contact</div>
+            <h2>Let’s connect around people strategy, growth, and execution.</h2>
+            <p>
+              Based in San Diego, CA. Available through the contact information provided in the resume.
+            </p>
+          </div>
+          <div class="contact-actions">
+            <a class="contact-link" href="mailto:tjmclaug91@gmail.com">Email · tjmclaug91@gmail.com</a>
+            <a class="contact-link" href="tel:+18583495172">Phone · 858-349-5172</a>
+            <div class="contact-link">Location · San Diego, CA</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="site-shell footer-inner">
+      <span>© <span id="year"></span> Tyler McLaughlin</span>
+      <span>Single-file portfolio · Built from resume content only</span>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.mobile-toggle');
+    const themeToggle = document.querySelector('.theme-toggle');
+    const themeIcon = document.querySelector('.theme-icon');
+    const nav = document.querySelector('nav');
+    const navLinks = document.querySelectorAll('nav a');
+    const sections = [...document.querySelectorAll('main section[id]')];
+    function getStoredTheme() {
+      try {
+        return localStorage.getItem('portfolio-theme');
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function setStoredTheme(theme) {
+      try {
+        localStorage.setItem('portfolio-theme', theme);
+      } catch (error) {
+        return null;
+      }
+    }
+
+    const storedTheme = getStoredTheme();
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialTheme = storedTheme || (prefersDark ? 'dark' : 'light');
+
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      const isDark = theme === 'dark';
+      themeToggle.setAttribute('aria-pressed', String(isDark));
+      themeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+      themeIcon.textContent = isDark ? '☾' : '◐';
+    }
+
+    applyTheme(initialTheme);
+
+    themeToggle.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      const next = current === 'dark' ? 'light' : 'dark';
+      setStoredTheme(next);
+      applyTheme(next);
+    });
+
+    toggle.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      toggle.textContent = isOpen ? '×' : '☰';
+    });
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.textContent = '☰';
+      });
+    });
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.13 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    const activeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`);
+          });
+        }
+      });
+    }, { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
+
+    sections.forEach(section => activeObserver.observe(section));
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
